@@ -9,8 +9,10 @@ namespace JamaicaTaxCalculator.Models
     {
         public bool UseTaxThreshold { get; set; }
         public bool UseNISRate { get; set; }
+        public bool UseNISCap { get; set; }
         public bool UseEducationTaxRate { get; set; }
         public bool UseNHTRate { get; set; }
         public bool UsePension { get; set; }
+        public bool UseIncomeTax { get; set; }
     }
 }

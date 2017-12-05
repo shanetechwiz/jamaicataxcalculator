@@ -8,5 +8,10 @@ namespace JamaicaTaxCalculator.Models
     public class SalaryInformationRequest
     {
         public SalaryDetails details { get; set; }
+
+        public SalaryInformationRequest()
+        {
+            details = new SalaryDetails();
+        }
     }
 }

@@ -29,23 +29,29 @@ namespace JamaicaTaxCalculator.Controllers
             return View();
         }
 
-        public IActionResult Calculate(SalaryInformationRequest request)
+        [Route("api/Calculate")]
+        public IActionResult Calculate(Decimal grossIncome, bool hasPension = false, Decimal pensionRate = 0)
         {
+            SalaryInformationRequest request = new SalaryInformationRequest();
             SalaryInformationResponse response = new SalaryInformationResponse();
             try
             {
+                request.details.GrossIncome = grossIncome;
+
                 response.Details = _taxService.GetSalaryDetails(request);
                 response.Success = true;
             }
             catch (Exception ex)
             {
-                var errorMessage = $"An exception occured while trying to process your request.";
+                var errorMessage = "An exception occured while trying to process your request.";
                 Console.WriteLine($"{errorMessage} {ex.Message} - {ex.StackTrace}");
                 response = new SalaryInformationResponse();
                 response.Errors.Add(errorMessage);
+
+                return BadRequest(response);
             }
 
-            return new JsonResult(response);
+            return Ok(response);
         }
 
         public IActionResult Error()

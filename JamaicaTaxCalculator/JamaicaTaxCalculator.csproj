@@ -21,7 +21,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\TaxCalculator.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\TaxCalculator.tsx" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
